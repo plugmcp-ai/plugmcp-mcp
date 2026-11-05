@@ -1,0 +1,58 @@
+{
+  "name": "plugmcp-mcp",
+  "version": "0.1.0",
+  "description": "Search MCP servers and agent skills, compare them, and get install configs from any MCP client.",
+  "mcpName": "ai.plugmcp/directory",
+  "license": "MIT",
+  "author": "PlugMCP (https://plugmcp.ai)",
+  "homepage": "https://plugmcp.ai/directory-mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plugmcp-ai/plugmcp-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plugmcp-ai/plugmcp-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "mcp-directory",
+    "awesome-mcp",
+    "claude",
+    "claude-code",
+    "cursor",
+    "vscode",
+    "windsurf",
+    "codex",
+    "grok",
+    "agent-skills",
+    "agents"
+  ],
+  "type": "module",
+  "bin": {
+    "plugmcp-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/proxy.test.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/client": "^2.4.0",
+    "@modelcontextprotocol/server": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "^7.0.2"
+  }
+}

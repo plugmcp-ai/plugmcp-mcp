@@ -1,0 +1,47 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "ai.plugmcp/directory",
+  "title": "PlugMCP directory",
+  "description": "Search MCP servers and agent skills, compare them, and get install configs for your client.",
+  "repository": {
+    "url": "https://github.com/plugmcp-ai/plugmcp-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://plugmcp.ai/directory-mcp",
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "plugmcp-mcp",
+      "version": "0.1.0",
+      "runtimeHint": "npx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "PLUGMCP_API_KEY",
+          "description": "Optional pb_live_ key from https://plugmcp.ai/app. Without it: 50 calls a day per IP.",
+          "isRequired": false,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://plugmcp.ai/mcp-server",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Optional. Bearer pb_live_ key from https://plugmcp.ai/app.",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

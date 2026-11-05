@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Live smoke against plugmcp.ai
+        run: npm run smoke
+      - name: server.json matches package.json
+        run: |
+          node -e '
+            const s = require("./server.json"), p = require("./package.json");
+            const pkg = s.packages.find((x) => x.identifier === p.name);
+            if (!pkg) throw new Error("server.json has no npm package " + p.name);
+            if (pkg.version !== p.version || s.version !== p.version) throw new Error("versions differ: package " + p.version + ", server.json " + s.version + "/" + pkg.version);
+            if (p.mcpName !== s.name) throw new Error("mcpName " + p.mcpName + " != server.json name " + s.name);
+            if (s.description.length > 100) throw new Error("server.json description is over 100 characters");
+            console.log("ok", s.name, s.version);
+          '
