@@ -1,7 +1,7 @@
 import { Client, ProtocolError, StreamableHTTPClientTransport } from "@modelcontextprotocol/client";
 import { Server } from "@modelcontextprotocol/server";
 
-export const VERSION = "0.1.0";
+export const VERSION = "0.1.1";
 export const DEFAULT_URL = "https://plugmcp.ai/mcp-server";
 
 export const INSTRUCTIONS = [

@@ -147,6 +147,10 @@ npm test        # build, then unit tests against an in-memory upstream
 npm run smoke   # run the built server over stdio against plugmcp.ai
 ```
 
+## Release
+
+Push a `v*` tag that matches `package.json`. The publish workflow runs the tests, publishes to npm (`NPM_TOKEN` secret), then publishes `server.json` to the MCP Registry as `ai.plugmcp/directory`, signed with the plugmcp.ai domain key (`MCP_REGISTRY_PRIVATE_KEY` secret).
+
 ## Related
 
 - [awesome-mcp-servers](https://github.com/plugmcp-ai/awesome-mcp-servers): the curated shelves from the same directory.
