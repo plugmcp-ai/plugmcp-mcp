@@ -23,10 +23,10 @@ jobs:
       - name: Tag matches package.json
         run: test "v$(node -p 'require("./package.json").version')" = "$GITHUB_REF_NAME"
 
+      # Auth via npm Trusted Publisher (OIDC). Do not set NODE_AUTH_TOKEN —
+      # a token with 2FA forces EOTP and bypasses OIDC.
       - name: Publish to npm
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install mcp-publisher
         run: |

@@ -1,6 +1,6 @@
 {
   "name": "plugmcp-mcp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Search MCP servers and agent skills, compare them, and get install configs from any MCP client.",
   "mcpName": "ai.plugmcp/directory",
   "license": "MIT",
