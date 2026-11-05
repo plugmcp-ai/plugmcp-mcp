@@ -13,7 +13,7 @@ export const INSTRUCTIONS = [
 export type ProxyOptions = {
   /** Directory MCP endpoint. Defaults to https://plugmcp.ai/mcp-server. */
   url?: string;
-  /** Optional pb_live_ key; raises the daily limit from 50 calls per IP to the account limit. */
+  /** Optional pb_live_ key; raises the limits from the per-IP ones to the account's. */
   apiKey?: string;
   /** Replaces the HTTP upstream, for tests. */
   upstream?: () => Promise<Client>;

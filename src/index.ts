@@ -11,7 +11,7 @@ Usage: npx -y plugmcp-mcp
 
 Environment:
   PLUGMCP_API_KEY  Optional pb_live_ key from https://plugmcp.ai/app.
-                   Without it: 50 calls a day per IP. Free account: 500 a day.
+                   Without it: 20 calls a day per IP. Free account: 400 a day.
   PLUGMCP_URL      Directory endpoint. Default: ${DEFAULT_URL}
 
 No install needed for clients that support remote servers:

@@ -98,7 +98,15 @@ Settings, then Connectors, then Add. Name `plugmcp`, URL `https://plugmcp.ai/mcp
 
 ## API key (optional)
 
-Without a key you get 50 calls a day per IP. A free account gets 500 a day; paid plans get 20,000. Create a `pb_live_` key at [plugmcp.ai/app](https://plugmcp.ai/app) and pass it as `PLUGMCP_API_KEY`:
+Every tier is paced, so one busy agent cannot use the whole day at once:
+
+| | Per minute | Per hour | Per day |
+| --- | --- | --- | --- |
+| No key (per IP) | 5 | 10 | 20 |
+| Free account key | 15 | 60 | 400 |
+| Paid plan key | 300 | no cap | 20,000 |
+
+When a limit is hit, the tool result says which one and when it resets. Calls without a key may also wait while the directory is busy; key holders keep working. Create a `pb_live_` key at [plugmcp.ai/app](https://plugmcp.ai/app) and pass it as `PLUGMCP_API_KEY`:
 
 ```json
 {

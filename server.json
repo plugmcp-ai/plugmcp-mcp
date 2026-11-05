@@ -22,7 +22,7 @@
       "environmentVariables": [
         {
           "name": "PLUGMCP_API_KEY",
-          "description": "Optional pb_live_ key from https://plugmcp.ai/app. Without it: 50 calls a day per IP.",
+          "description": "Optional pb_live_ key from https://plugmcp.ai/app. Without it: 20 calls a day per IP.",
           "isRequired": false,
           "isSecret": true,
           "format": "string"
