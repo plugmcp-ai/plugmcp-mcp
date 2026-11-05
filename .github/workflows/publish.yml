@@ -12,19 +12,28 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
-          cache: npm
+          package-manager-cache: false
       - run: npm ci
       - run: npm test
       - name: Tag matches package.json
         run: test "v$(node -p 'require("./package.json").version')" = "$GITHUB_REF_NAME"
 
-      # Auth via npm Trusted Publisher (OIDC). Do not set NODE_AUTH_TOKEN —
-      # a token with 2FA forces EOTP and bypasses OIDC.
+      # setup-node writes _authToken=${NODE_AUTH_TOKEN} into NPM_CONFIG_USERCONFIG.
+      # An empty/dummy token makes npm skip OIDC and fail with E404. Strip it so
+      # Trusted Publisher (OIDC) can authenticate.
+      - name: Enable npm OIDC auth
+        run: |
+          NPMRC_PATH="${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
+          if [ -f "$NPMRC_PATH" ]; then
+            sed -i '/_authToken/d' "$NPMRC_PATH"
+          fi
+          npm --version
+
       - name: Publish to npm
         run: npm publish --provenance --access public
 
