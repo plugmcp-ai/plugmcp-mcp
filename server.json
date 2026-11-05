@@ -8,13 +8,13 @@
     "source": "github"
   },
   "websiteUrl": "https://plugmcp.ai/directory-mcp",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "packages": [
     {
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "plugmcp-mcp",
-      "version": "0.1.1",
+      "version": "0.1.4",
       "runtimeHint": "npx",
       "transport": {
         "type": "stdio"
